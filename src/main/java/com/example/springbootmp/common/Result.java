@@ -12,13 +12,11 @@ public class Result {
     private String msg;
     private Object data;
 
-    public static Result
-    success() {
+    public static Result success() {
         return new Result(Constants.CODE_200, "", null);
     }
 
-    public static Result
-    success(Object data) {
+    public static Result success(Object data) {
         return new Result(Constants.CODE_200, "", data);
     }
 

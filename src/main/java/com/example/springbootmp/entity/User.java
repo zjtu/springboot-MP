@@ -1,10 +1,13 @@
 package com.example.springbootmp.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -34,12 +37,18 @@ public class User {
     /**
      * 自动填充策略：插入时填充
      */
+    @ApiModelProperty(value = "创建时间")
     @TableField(value = "create_time",fill = FieldFill.INSERT)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date createTime;
     /**
      * 自动填充策略：插入或更新时填充
      */
+    @ApiModelProperty(value = "更新时间")
     @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date updateTime;
 
     /**

@@ -9,7 +9,6 @@ import com.example.springbootmp.mapper.UserMapper;
 import com.example.springbootmp.service.IUserService;
 import com.example.springbootmp.common.Result;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +31,13 @@ public class UserController {
     public Result page(@RequestParam Integer pageNum,
                        @RequestParam Integer pageSize){
         LambdaQueryWrapper<User>  lambdaQueryWrapper= new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.gt(User::getAge,15);
+        lambdaQueryWrapper.gt(User::getAge,15).orderByDesc(User::getId);
         Page<User> page = new Page<>(pageNum,pageSize);
         IPage<User> userPage = userMapper.selectPage(page, lambdaQueryWrapper);
-        System.out.println(userPage.getPages());
-        System.out.println(userPage.getRecords());
-        System.out.println(userPage.getTotal());
-        return Result.success(page);
+//        System.out.println("总页数:"+userPage.getPages());
+//        System.out.println("总条数:"+userPage.getTotal());
+//        System.out.println("记录"+userPage.getRecords());
+//        return Result.success(userPage);
+        return Result.success(userService.page(new Page<>(pageNum, pageSize), lambdaQueryWrapper));
     }
 }
