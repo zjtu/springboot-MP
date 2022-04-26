@@ -17,12 +17,12 @@ public class CodeGenerator {
                     builder.author("tao") // 设置作者
                             .enableSwagger() // 开启 swagger 模式
                             .fileOverride() // 覆盖已生成文件
-                            .outputDir("C:\\Users\\10644\\Downloads\\GoogleDownload\\springboot\\springboot-mp\\src\\main\\java\\"); // 指定输出目录
+                            .outputDir("D:\project\springboot\src\main\java\"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.example.springbootmp") // 设置父包名
                             .moduleName(null) // 设置父包模块名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "C:\\Users\\10644\\Downloads\\GoogleDownload\\springboot\\springboot-mp\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D:\project\springboot\src\main\resources\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
                     builder.addInclude("student") // 设置需要生成的表名
